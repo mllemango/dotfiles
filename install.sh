@@ -10,8 +10,6 @@ fi
 ZSH_CUSTOM="/home/spin/.oh-my-zsh/custom"
 echo "\n -- SPACESHIP TIME -- \n"
 # Install spaceship theme
-mkdir $ZSH_CUSTOM/themes/spaceship-prompt
-
 git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
 ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
 # install ohmyzsh plugins
