@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+autoload -U compinit && compinit
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/melaniewang/.oh-my-zsh"
 
@@ -9,6 +9,7 @@ export ZSH="/Users/melaniewang/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
+ZSH_THEME="spaceship"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -72,10 +73,11 @@ plugins=(
   git
   bundler
   dotenv
-  osx
+  macos
   rake
   rbenv
   ruby
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -95,11 +97,11 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 export EDITOR='code'
-alias shpify=/Users/melaniewang/src/github.com/Shopify/shopify-app-cli/bin/shopify
+alias shpify=/Users/melaniewang/src/github.com/Shopify/shopify-cli/bin/shopify
 alias ishpify=/Users/melaniewang/src/github.com/Shopify/shopify-cli-internal/bin/shopify
 alias brew-dev=/Users/melaniewang/Documents/brew/bin/brew
 alias pip=/usr/local/bin/pip3
-alias py=/usr/local/bin/python3
+alias py=/opt/homebrew/bin/python3
 alias pythontest="code ~/Documents/pythontest"
 alias aoc="code ~/Documents/adventofcode2020"
 alias rubytest="code ~/Documents/rubytest"
@@ -124,13 +126,14 @@ alias unbork='bin/rails db:reset RAILS_ENV=test || bin/rails db:cpt_migrate lhm:
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-  # Set Spaceship ZSH as a prompt
-  autoload -U promptinit; promptinit
-  prompt spaceship
-
-SPACESHIP_TIME_SHOW=ture
-[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="/usr/local/opt/ruby/bin:$PATH:$HOME/.rvm/bin"
 if [ -e /Users/melaniewang/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/melaniewang/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+source /Users/melaniewang/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
+
+[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
+
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+
+eval $(thefuck --alias)
